@@ -1,0 +1,172 @@
+module Base
+{
+
+    item CubensisFungusFresh
+    {
+        DisplayName = Psilocybe Cubensis,
+        DisplayCategory = Drugs,
+        Type = Food,
+		FoodType = Mushroom,
+		HerbalistType = Mushroom,
+		OnEat = OnEat_WildFoodGeneric,
+        Weight = 0.1,
+        DaysFresh = 5,
+        DaysTotallyRotten = 8,
+        HungerChange = -5,
+        UnhappyChange = -20,
+        BoredomChange = -20,
+        ThirstChange = -10,
+		Carbohydrates = 2.12,
+		Lipids = 0.24,
+		Proteins = 2.04,
+        Wet = True,
+        WetCooldown = 80000,
+        ItemWhenDry = CubensisFungusDry,
+        BadInMicrowave = true,
+        Calories = 10,
+        Icon = MushroomDeathCap,
+        WorldStaticModel = CubensisFungusFresh,
+		EvolvedRecipeName = Mushroom,
+    }
+    
+    item CubensisFungusDry
+    {
+        DisplayName = Psilocybe Cubensis (Dry),
+        DisplayCategory = Drugs,
+        Type = Food,
+		FoodType = Mushroom,
+		HerbalistType = Mushroom,
+        Weight = 0.1,
+        Spice = True,
+        UnhappyChange = -200,
+        BoredomChange = -200,
+        StressChange = -200,
+        HungerChange = -2,
+        ThirstChange = -10,
+		Carbohydrates = 2.12,
+		Lipids = 0.24,
+		Proteins = 2.04,
+        BadInMicrowave = true,
+        Calories = 10,
+        Icon = MushroomDeathCap,
+        WorldStaticModel = CubensisFungusDry,
+		EvolvedRecipeName = Mushroom,
+    }
+
+
+    item Heroin
+    {
+        DisplayCategory = Drugs,
+        DisplayName = Heroin,
+        Weight = 0.2,
+        Type = Drainable,
+        UseDelta = 4,
+        Icon = Morphine,
+        WorldStaticModel = Heroin,
+    }
+
+    item Syringe
+    {
+		Weight		= 0.01,
+		Type		= Normal,
+        DisplayCategory = Drugs,
+		DisplayName	= Syringe,
+		Icon		= SyringeEmpty,
+        WorldStaticModel = Syringe,
+    }
+
+    item HeroinSyringe
+    {
+        Type = Food,
+        DisplayCategory = Drugs,
+        FoodType = NoExplicit,
+        EatType = BleachBottle,
+        CustomEatSound = DrinkingFromBottleGlass,
+        Poison = True,
+        PoisonPower = 1000,
+        Calories = -2000,
+        StressChange = -2000,
+        UnhappyChange = -2000,
+        BoredomChange = -2000,
+        FatigueChange = 50,
+        Carbohydrates = -100,
+        Proteins = -100,
+        Lipids = -100,
+        Icon = Syringe,
+        ReplaceOnUse = Syringe,
+        WorldStaticModel = Syringe,
+    }
+
+    recipe Ready Heroin Syringe
+    {
+        DrugMod.Heroin = 1,
+        Syringe,
+        Lighter = 1,
+        keep Base.Spoon,
+
+        Result:HeroinSyringe = 1,
+        Time:100,
+    }
+
+    item MethBagBlue
+    {
+        DisplayName = Blue Meth (Blue Razz),
+        Type = Food,
+        Weight = 0.1,
+		HungerChange = -1,
+		UnhappyChange = -50,
+        DisplayCategory = Drugs,
+        WorldStaticModel = MethBagBlue,
+        Icon = MethBlue,
+		OnEat = PleaseWork,
+		DrugID = Meth,
+    }
+
+    item MethBagPurple
+    {
+        DisplayName = Purple Meth (Grape),
+        Type = Food,
+        Weight = 0.1,
+        HungerChange = -1,
+        UnhappyChange = -50,
+        DisplayCategory = Drugs,
+        WorldStaticModel = MethBagPurple,
+        Icon = MethPurple,
+        DrugID = PurpleMeth,
+        OnEat = PleaseWork2,
+    }
+    
+    item MethBagRed
+    {
+        DisplayName = Red Meth (Fruit Punch),
+        Type = Food,
+        Weight = 0.1,
+        HungerChange = -1,
+        UnhappyChange = -50,
+        DisplayCategory = Drugs,
+        WorldStaticModel = MethBagRed,
+        Icon = MethRed,
+		DrugID = RedMeth,
+		OnEat = PleaseWork3,
+    }
+
+    item PillBottleBenzos
+    {
+        DisplayName = Benzos,
+        Type = Normal,
+        Weight = 0.01,
+        DisplayCategory = Drugs,
+        WorldStaticModel = PillBottleBenzos,
+        Icon = PillsBetaBlockers2,
+    }
+
+    item VialOfDrugs
+    {
+        DisplayName = VialOfDrugs,
+        Type = Normal,
+        Weight = 0.01,
+        DisplayCategory = Drugs,
+        WorldStaticModel = VialSealed,
+        Icon = LawnGnome,
+    }
+}

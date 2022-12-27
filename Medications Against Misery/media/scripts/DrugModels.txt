@@ -1,0 +1,77 @@
+module Base
+{
+	
+    /** --- Magic Mushrooms --- **/
+
+    model CubensisFungusFresh
+    {
+        mesh = WorldItems/CubensisFungus,
+        texture = WorldItems/CubensisFresh,
+    }
+
+    model CubensisFungusDry
+    {
+        mesh = WorldItems/CubensisFungus,
+        texture = WorldItems/CubensisDry,
+    }
+
+    model CubensisFungusRotten
+    {
+        mesh = WorldItems/CubensisFungus,
+        texture = WorldItems/CubensisRotten,
+    }
+
+
+    /** --- Heroin --- **/
+    
+    model Heroin
+    {
+        mesh = WorldItems/Heroin,
+        texture = WorldItems/Heroin,
+    }
+
+
+    /** --- Meth --- **/
+
+    model MethBagBlue
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagBlue,
+    }
+    
+    model MethBagPurple
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagPurple,
+    }
+    
+    model MethBagRed
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagRed,
+    }
+
+
+    /** --- Pills --- **/
+    
+    model PillBottleBenzos
+    {
+        mesh = WorldItems/PillBottleB,
+        texture = WorldItems/PillBottleBenzos,
+    }
+
+
+    /** --- Misc --- **/
+
+    model VialSealed
+    {
+        mesh = WorldItems/VialSealed,
+        texture = WorldItems/VialSeal,
+    }
+
+    model Syringe
+    {
+        mesh = WorldItems/Syringe,
+        texture = WorldItems/Syringe,
+    }
+}
