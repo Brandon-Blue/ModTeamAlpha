@@ -1,5 +1,5 @@
 DrugList = {}
-
+local DrugInfo = {}
 
 
 --[[
@@ -33,7 +33,7 @@ Defined Drug categories -
 ]]--
 
 
-DrugList["Stimulant"] = {
+DrugInfo["Stimulant"] = {
     name = "Stimulant",
     category = "Stimulant"
     base = nil,
@@ -48,7 +48,7 @@ DrugList["Stimulant"] = {
 }
 
 
-DrugList["Meth"] = {
+DrugInfo["Meth"] = {
  name = 'Meth',
  category = 'Stimulant',
  base = 'Meth',
@@ -60,7 +60,7 @@ DrugList["Meth"] = {
  screenEffects = false
 }
 
-DrugList["RedMeth"] = {
+DrugInfo["RedMeth"] = {
  name = 'RedMeth',
  category = 'Stimulant',
  base = 'Meth',
@@ -72,7 +72,7 @@ DrugList["RedMeth"] = {
  screenEffects = false
 }
 
-DrugList["PurpleMeth"] = {
+DrugInfo["PurpleMeth"] = {
  name = 'PurpleMeth',
  category = 'Stimulant',
  base = 'Meth',
@@ -84,7 +84,7 @@ DrugList["PurpleMeth"] = {
  screenEffects = false
 }
 
-DrugList["Heroin"] = {
+DrugInfo["Heroin"] = {
  name = 'Heroin',
  category = 'Narcotic',
  base = 'Heroin',
@@ -96,7 +96,7 @@ DrugList["Heroin"] = {
  screenEffects = false
 }
 
-DrugList["Steroids"] = {
+DrugInfo["Steroids"] = {
  name = 'Steroids',
  category = 'Steroids',
  base = 'Steroids',
@@ -107,6 +107,12 @@ DrugList["Steroids"] = {
  sideEffects = false,
  screenEffects = false
 }
+
+
+function DrugInfo:getDrugInfo(name)
+    return DrugInfo[name]
+end
+
 
 
 --[[
