@@ -57,11 +57,28 @@ function PleaseWork3(food, player, percent)
     print("I didn't feel like typing more, I just REALLY hope that these all worked... <3")--]]
     --[[local x = food:getModData().DrugID
     print(x)
-    local DrugID = DrugList[x]
+    local DrugID = DrugInfo:getDrugInfo(x)
     local category = DrugID.category
     local stats = player:getStats()
     local finalPotency = (player:getModData()[category]) + (Potency(DrugID, player))--]]
-    print(BaseEffect_Stimulant(5))
+    
+end
+
+function OnEat_Drug(item, player)
+    local x = item:getModData().DrugID
+    local drugData = DrugInfo:getDrugInfo(x)
+    local categoryData = DrugInfo:getDrugInfo(drugData.category)
+    local initalPotency = Potency(drugData, player)
+    player:getModData().cumPot = player:getModData().cumPot + initalPotency
+    drugData.sideEffect()
+    -- Everything from this point on is psuedo code
+    if (player:getMoodleLevel("High") == 1) then
+        categoryData.effectTier1()
+    elseif (player:getMoodleLevel("High") == 2) then
+        categoryData.effectTier2()
+    elseif (player:getMoodleLevel("High") == 3) then
+        categoryData.effectTier3()
+    end
 end
 
 function Potency(DrugID, player)
