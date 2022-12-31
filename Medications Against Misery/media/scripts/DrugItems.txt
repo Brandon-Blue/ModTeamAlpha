@@ -118,7 +118,7 @@ module Base
         DisplayCategory = Drugs,
         WorldStaticModel = MethBagBlue,
         Icon = MethBlue,
-		OnEat = PleaseWork,
+		OnEat = OnEat_Drug
 		DrugID = Meth,
     }
 
@@ -133,7 +133,7 @@ module Base
         WorldStaticModel = MethBagPurple,
         Icon = MethPurple,
         DrugID = PurpleMeth,
-        OnEat = PleaseWork2,
+        OnEat = OnEat_Drug
     }
     
     item MethBagRed
@@ -147,7 +147,7 @@ module Base
         WorldStaticModel = MethBagRed,
         Icon = MethRed,
 		DrugID = RedMeth,
-		OnEat = PleaseWork3,
+		OnEat = OnEat_Drug
     }
 
     item PillBottleBenzos
@@ -158,6 +158,19 @@ module Base
         DisplayCategory = Drugs,
         WorldStaticModel = PillBottleBenzos,
         Icon = PillsBetaBlockers2,
+    }
+	
+    item Morphine
+    {
+	DisplayName = Morphine,
+        Type = Food,
+	Weight = 0.1,
+	HungerChange = -5,
+        DisplayCategory = Drugs,
+        WorldStaticModel = Syringe,
+	Icon = PillsBetaBlockers2,
+	DrugID = Morphine,
+	OnEat = OnEat_Drug
     }
 
     item VialOfDrugs
