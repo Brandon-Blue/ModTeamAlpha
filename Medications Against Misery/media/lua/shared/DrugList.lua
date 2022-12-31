@@ -34,19 +34,70 @@ Defined Drug categories -
 
 
 DrugInfo["Stimulant"] = {
-    name = "Stimulant",
-    category = "Stimulant"
-    base = nil,
-    description = "",
-    potency = nil,
-    duration = nil,
-    onset = nil,
     effectTier1 = BaseEffect_Stimulant_tier1,
     effectTier2 = BaseEffect_Stimulant_tier2,
     effectTier3 = BaseEffect_Stimulant_tier3,
-    screenEffects = nil,
 }
 
+DrugInfo["Opioid"] = {
+    effectTier1 = BaseEffect_Opioid_tier1,
+    effectTier2 = BaseEffect_Opioid_tier2,
+    effectTier3 = BaseEffect_Opioid_tier3,
+}
+
+DrugInfo["Psychedelic"] = {
+    effectTier1 = nil,
+    effectTier2 = nil,
+    effectTier3 = nil,
+}
+
+DrugInfo["SamllEnergyDrink"] = {
+    name = "SamllEnergyDrink",
+    category = "Stimulant",
+    base = "EnergyDrink",
+    potency = 1,
+    duration = 10,
+    sideEffects = nil,
+}
+
+DrugInfo["LightEnergyDrink"] = {
+    name = "LightEnergyDrink",
+    category = "Stimulant",
+    base = "EnergyDrink",
+    potency = 5,
+    duration = 10,
+    sideEffects = nil,
+}
+
+DrugInfo["StrongEnergyDrink"] = {
+    name = "StrongEnergyDrink",
+    category = "Stimulant",
+    base = "EnergyDrink",
+    potency = 10,
+    duration = 10,
+    sideEffects = nil,
+}
+
+DrugInfo["Cocaine"] = {
+    name = "Cocaine",
+    category = "Stimulant",
+    base = "Cocaine",
+    potency = 55,
+    duration = 20,
+    sideEffects = nil,
+
+}
+
+DrugInfo["Epinephrine"] = {
+    name = 'Epinephrine',
+    category = 'Stimulant',
+    base = 'Epinephrine',
+    description = '',
+    potency = 35,
+    duration = 10,
+    sideEffects = false,
+    screenEffects = false
+   }
 
 DrugInfo["Meth"] = {
  name = 'Meth',
@@ -55,7 +106,6 @@ DrugInfo["Meth"] = {
  description = '',
  potency = 50,
  duration = 10,
- onset = 5,
  sideEffects = false,
  screenEffects = false
 }
@@ -67,7 +117,6 @@ DrugInfo["RedMeth"] = {
  description = '',
  potency = 50,
  duration = 10,
- onset = 5,
  sideEffects = true,
  screenEffects = false
 }
@@ -79,21 +128,46 @@ DrugInfo["PurpleMeth"] = {
  description = '',
  potency = 50,
  duration = 10,
- onset = 5,
  sideEffects = true,
  screenEffects = false
 }
 
 DrugInfo["Heroin"] = {
  name = 'Heroin',
- category = 'Narcotic',
+ category = 'Opioid',
  base = 'Heroin',
  description = getText('UI_Item_Heroin_Description'),
  potency = 70,
  duration = 20,
- onset = 10,
  sideEffects = false,
  screenEffects = false
+}
+
+DrugInfo["Percocet"] = {
+    name = "Percocet",
+    category = "Opioid",
+    base = "Painkiller",
+    potency = 30,
+    duration = 20,
+    sideEffects = nil,
+}
+
+DrugInfo["Codeine"] = {
+    name = "Codeine",
+    category = "Opioid",
+    base = "Painkiller",
+    potency = 30,
+    duration = 20,
+    sideEffects = nil,
+}
+
+DrugInfo["Morphine"] = {
+    name = "Morphine",
+    category = "Opioid",
+    base = "Painkiller",
+    potency = 30,
+    duration = 20,
+    sideEffects = OnEat_Morphine,
 }
 
 DrugInfo["Steroids"] = {
@@ -103,11 +177,41 @@ DrugInfo["Steroids"] = {
  description = getText('UI_Item_Steroids_Description'),
  potency = 50,
  duration = 100,
- onset = 0,
  sideEffects = false,
  screenEffects = false
 }
 
+
+DrugInfo["LSD"] = {
+    name = "LSD",
+    category = "Psychedelic"
+    base = "LSD",
+    potency = 40,
+    duratinon = 30,
+    sideEffects = nil,
+    screenEffects = nil,
+}
+
+DrugInfo["Psilocybin"] = {
+    name = "Psilocybin",
+    category = "Psychedelic"
+    base = "Shrooms",
+    potency = 40,
+    duratinon = 30,
+    sideEffects = nil,
+    screenEffects = nil,
+}
+
+
+DrugInfo["Ketamine"] = {
+    name = "Ketamine",
+    category = "Psychedelic"
+    base = "Ketamine",
+    potency = 40,
+    duratinon = 30,
+    sideEffects = nil,
+    screenEffects = nil,
+}
 
 function DrugInfo:getDrugInfo(name)
     return DrugInfo[name]
