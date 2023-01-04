@@ -1,0 +1,44 @@
+module StreetPharma
+{
+    item MethBagBlue
+    {
+        DisplayName = Blue Razz Meth (Caffeine),
+        Type = Food,
+        Weight = 0.1,
+		HungerChange = -10,
+        WorldStaticModel = MethBagBlue,
+        Icon = MethBlue,
+        CustomContextMenu = Inhale,
+
+        DrugID = BlueMeth,
+		OnEat = OnTakeDrug,
+    }
+
+    item MethBagPurple
+    {
+        DisplayName = Grape Meth (Adderall),
+        Type = Food,
+        Weight = 0.1,
+        HungerChange = -10,
+        WorldStaticModel = MethBagPurple,
+        Icon = MethPurple,
+        CustomContextMenu = Drink,
+
+        DrugID = PurpleMeth,
+        OnEat = OnTakeDrug,
+    }
+
+    item MethBagRed
+    {
+        DisplayName = Fruit Punch Meth (Meth),
+        Type = Food,
+        Weight = 0.1,
+		HungerChange = -10,
+        WorldStaticModel = MethBagRed,
+        Icon = MethRed,
+        CustomContextMenu = Moisten,
+
+		DrugID = RedMeth,
+		OnEat = OnTakeDrug,
+    }
+}

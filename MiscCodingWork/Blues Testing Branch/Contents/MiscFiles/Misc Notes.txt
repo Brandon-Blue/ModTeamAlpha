@@ -1,0 +1,98 @@
+Variables for the Drugs:
+    - Potency
+    - Category
+    - Alias
+    - Duration
+    - Delivery
+    - Toxicity
+
+Drug Categories:
+    - Stimulant
+    - Narcotic
+    - Depressant
+    - Psychedelic
+    - Steroid
+    - "None" / Nil
+        ^ will skip a large portion of the code, useful for any drug that should only have side effects
+-------------------------------------------------
+Drug Effect Tiers, based on Cumulative Potency
+    0-6
+    7-12
+    13-18
+    19-24
+-------------------------------------------------
+Stimulants
+- Prescription Stimulants (Adderall / Ritalin)
+- Coke/Crack
+- Meth
+- MDMA (Ecstasy)
+- Nicotine*
+
+Depressants
+- Benzos
+- Beta Blockers / Anti-Depressants*
+- GHB
+- Alcohol*
+
+Narcotics/Opioids
+- Heroin
+- Painkillers*
+- Opium
+- Morphine / Codeine
+
+Psychedelics/Dissociatives
+- LSD
+- Mescaline (Peyote)
+- Dextromethorphan (Cough Syrup)
+- Psilocybin (Magic Mushrooms)
+- PCP (Angel Dust)
+- Cannabis*
+- MDMA (Ecstasy)
+- Ketamine
+- Ayahuasca
+
+Steroids
+- Steroids
+- Inhaler
+-------------------------------------------------
+
+Things I need to translate into events and when to run them
+
+on start
+    - Initialize the tables, make sure that the game knows they exist.
+        - Might want to get more granular? Initialize ALL the drug data, not just the tables?
+
+    - Check for the current drug tier in the player
+         If >= 1, use this to trigger the drug effects.
+
+    - Check for Overdose? If you do this, make sure to have a variable that tracks if the player is CURRENTLY having an
+            overdose. That way you don't accidentally trigger the OD failed uptick twice
+         This should not check the players toxicity, only some value that sets their overdose.
+         Should work basically identically to the drug effects but in reverse.
+
+
+ -------------------------------------------------
+
+IDEA -
+    Have the function listed in the drug info table be what will check the drug tier(?)
+    But- that function should be the one that initializes your events. It can check for the current tier
+    and depending on that tier, it can trigger different effects. That would make it super useful
+    as you have been struggling with setting up a system to trigger those events in a straightforward way.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
