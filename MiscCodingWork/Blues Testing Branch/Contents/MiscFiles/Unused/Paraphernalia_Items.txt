@@ -1,0 +1,18 @@
+module StreetPharma
+{
+
+    item Syringe
+    {
+        Weight = 0.05,
+        Type = Normal,
+        DisplayCategory = Drugs,
+        DisplayName	= Syringe,
+        Icon = SyringeEmpty,
+        WorldStaticModel = Syringe,
+    }
+
+
+
+
+
+}

@@ -1,0 +1,198 @@
+Potency Calc
+    - On consume, check against traits, multiplies the end value by a set of modifiers.
+
+    Modifiers of Potency Based on Traits
+    --------------------------
+    Obese               - 0.75
+    Overweight          - 0.9
+    Underweight         - 1.1
+    Very Underweight    - 1.25
+    Emaciated           - 1.5
+
+    Iron Gut            - 0.9
+    Weak Stomach        - 1.1
+    --------------------------
+
+    In effect, a player who is severely overweight/underweight will have different degrees of effect from taking
+    the same drug, with the same base potency value.
+
+    At most-
+    65% increase, from Emaciated & Weak Stomach
+    32.5% decrease, from Obese & Iron Gut
+
+    Means that the impact of drugs is always relatively close to the 'normal', but there are more ways to increase
+    the relative severity as opposed to decrease. No one escapes.
+
+
+
+OD Chance Calc
+    - When taking a drug, the value of cumulative potency values will be checked against a threshold.
+    - If greater than the threshold, there is a chance to OD.
+
+    CumPot = Cumulative potency effecting the player.
+
+    Threshold = The cut-off potency value for ODing.
+
+    Extra = ( CumPot - Threshold )
+
+    OD Modifiers = Anything we deem should have an impact on the players likelihood of ODing. Addiction,
+                    traits, health, whatever.
+
+    OD Chance = (Extra) * OD Modifiers
+
+
+    - Additionally, it is worth considering if we track the potency of drug use cumulatively across ALL drugs,
+        or if we treat them individually / categorically.
+
+            Personally leaning towards tracking the cumulative total across ALL drug use, for the sake
+            of simplicity in the triggering of an overdose, while also giving us the ability to have
+            functions in place to check the value of the
+
+
+
+OD Happening Check
+    - Using the 'OD Chance' variable from above, we will roll a number to see if the player will actually have an
+        overdose upon passing the threshold.
+    - ZombRand() function will generate a random number, which will allow us to add an element of randomness.
+
+    if ZombRand() <= OD Chance, then the player will suffer an Overdose.
+
+    OD Chance
+
+
+Variables for the Drugs:
+    - Potency
+    - DrugCat
+    - Alias
+    - Duration
+    - Delivery
+
+DrugCat:
+    - Stimulants
+        Stim
+    - Narcotic
+        Narco
+    - Depressants
+        Dep
+    - Psychedelics
+        Psych
+    - Steroid
+        Ster
+
+Drug Duration:
+    Duration of drug is set a multiplier, put against the 10 min intervals in game
+
+----------
+Drug effects by tier
+Stim
+    1 =
+        - Minor endurance gain.
+
+Drug Effect Tiers
+    0-6
+    7-12
+    13-18
+    19-24
+
+
+Mod Data
+
+player:getModData().StreetPharma
+    - holds current potency values
+    -
+
+player:getModData().StreetPharmaDurations
+    - One for each category
+
+player:getModData().StreetPharmaRecords
+    - Holds info for number of times drugs have been taken.
+
+
+
+
+
+Stimulants
+- Prescription Stimulants (Adderall / Ritalin)
+- Coke/Crack
+- Meth
+- MDMA (Ecstasy)
+- Nicotine*
+
+Depressants
+- Benzos
+- Beta Blockers / Anti-Depressants*
+- GHB
+- Alcohol*
+
+Narcotics/Opioids
+- Heroin
+- Painkillers*
+- Opium
+- Morphine / Codeine
+
+Psychedelics/Dissociatives
+- LSD
+- Mescaline (Peyote)
+- Dextromethorphan (Cough Syrup)
+- Psilocybin (Magic Mushrooms)
+- PCP (Angel Dust)
+- Cannabis*
+- MDMA (Ecstasy)
+- Ketamine
+- Ayahuasca
+
+Steroids
+- Steroids
+- Inhaler
+
+
+
+--------------------------------------------------------------------
+-- Stimulants
+local function Stimulant_Tier1()
+    local player = getPlayer()
+    local stats = player:getStats()
+    local dmg = player:getBodyDamage()
+
+    -- Endurance
+    local enduranceChange = 0.002
+        -- 0.024 / irl minute @ 2 hour days
+    if stats:getEnduranceRecharging() == true then
+        enduranceChange = 0.004
+        -- 0.048 / irl minute @ 2 hour days
+    elseif player:isSitOnGround() == true then
+        enduranceChange = 0.005
+        -- 0.06 / irl minute @ 2 hour days
+    end
+    stats:setEndurance(stats:getEndurance() + enduranceChange)
+
+    stats:setHunger(stats:getHunger() - 0.0008)
+        -- 0.096 / irl minute @ 2 hour days
+    stats:setThirst(stats:getThirst() - 0.005)
+        -- 0.06 / irl minute @ 2 hour days
+    stats:setBoredom(stats:getBoredom() - 0.08)
+        -- 0.96 / irl minute @ 2 hour days
+    stats:setFatigue(stats:getFatigue() - 0.003)
+        -- 0.036 / irl minute @ 2 hour days
+end
+--------------------------------------------------------------------
+
+Player takes drug
+    - Check category
+    - Increase category duration
+    - Increase category potency
+    -
+
+
+
+
+
+
+
+
+
+
+
+
+
+

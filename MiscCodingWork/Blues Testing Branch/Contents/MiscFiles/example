@@ -1,0 +1,118 @@
+
+
+item Meth
+{
+~~ the rest of the information for the item~~
+
+DrugID = Meth,
+}
+
+    if drug.duration then
+        local callback = function(timer, args)
+            local example = 1
+            if not timer.repeats or timer.repeats == 0 then
+
+
+
+            end
+        end
+
+        Timers.add(drug.duration, 2, callback, args)
+    end
+
+
+    Alright! So- Still working on the drug mod, and I am sort of stuck coming up with some ideas so I'd appreciate some help!
+
+    **So!** The player will gain negative traits to emulate the effects of long term drug abuse. I am looking for
+    any interesting ideas for what these could be! They can be drug specific, drug type specific, or just broad ideas!
+
+
+But also, I would consider doing something like -
+
+```lua
+local function TraitSunlightSensitive()
+    local player = getPlayer()
+    local timeOfDay = getGameTime():getTimeOfDay()
+    local part = (ZombRand(14)+1)
+
+    if timeOfDay > 9 and timeOfDay < 20 and player:isOutside() then
+        player:getBodyDamage():AddDamage(part, 10)
+
+    end
+end
+
+
+Events.EveryTenMinutes.Add(TraitSunlightSensitive)
+```
+------------------------------------------------------------------------------------------------------------
+function DrugXYZEffectPerMinute()
+    local player = getPlayer();
+    player:getModData().YourModName = player:getModData().YourModName or {};
+    local modData = getPlayer():getModData().YourModName;
+    modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft or 0;
+    if modData.DrugXYZPotencyLeft ~= 0 then
+        local stats = getPlayer():getStats()
+        local NewEndurance = (stats:getEndurance() + 2)
+        stats:setEndurance(NewEndurance)
+        modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft - 1
+    else
+        Events.EveryMinute.Remove(DrugXYZEffectPerMinute)
+    end
+end
+
+function DrugsInPlayerSystem()
+    local player = getPlayer();
+    player:getModData().YourModName = player:getModData().YourModName or {};
+    local modData = getPlayer():getModData().YourModName;
+    modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft or 0;
+    if modData.DrugXYZPotencyLeft >= x then
+        Events.EveryMinute.Add(DrugXYZEffectPerMinute)
+    end
+end
+
+Events.OnCreatePlayer.Add(DrugsInPlayerSystem);
+
+
+------------------------------------------------------------------------------------------------------------
+function DrugXYZAfterEffects()
+    local player = getPlayer();
+    player:getModData().YourModName = player:getModData().YourModName or {};
+    local modData = getPlayer():getModData().YourModName;
+    modData.DrugXYZAfterEffectsDurationLeft = modData.DrugXYZAfterEffectsDurationLeft or 0;
+    if modData.DrugXYZAfterEffectsDurationLeft ~= 0 then
+        -- do some stuff
+        modData.DrugXYZAfterEffectsDurationLeft = modData.DrugXYZAfterEffectsDurationLeft - 1
+    else
+        Events.EveryMinute.Remove(DrugXYZAfterEffects)
+    end
+end
+
+function DrugXYZEffectPerMinute()
+    local player = getPlayer();
+    player:getModData().YourModName = player:getModData().YourModName or {};
+    local modData = getPlayer():getModData().YourModName;
+    modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft or 0;
+    if modData.DrugXYZPotencyLeft ~= 0 then
+        local stats = getPlayer():getStats()
+        local NewEndurance = (stats:getEndurance() + 2)
+        stats:setEndurance(NewEndurance)
+        modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft - 1
+    else
+        Events.EveryMinute.Remove(DrugXYZEffectPerMinute)
+        modData.DrugXYZAfterEffectsDurationLeft = 10; -- 10 min
+        Events.EveryMinute.Add(DrugXYZAfterEffects)
+    end
+end
+
+function DrugsInPlayerSystem()
+    local player = getPlayer();
+    player:getModData().YourModName = player:getModData().YourModName or {};
+    local modData = getPlayer():getModData().YourModName;
+    modData.DrugXYZPotencyLeft = modData.DrugXYZPotencyLeft or 0;
+    if modData.DrugXYZPotencyLeft >= x or modData.DrugXYZAfterEffectsDurationLeft >= 0 then
+        Events.EveryMinute.Add(DrugXYZEffectPerMinute)
+    end
+end
+
+Events.OnCreatePlayer.Add(DrugsInPlayerSystem);
+------------------------------------------------------------------------------------------------------------

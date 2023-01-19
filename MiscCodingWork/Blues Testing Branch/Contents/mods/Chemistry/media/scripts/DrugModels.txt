@@ -1,0 +1,21 @@
+module Base
+{
+
+    model MethBagBlue
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagBlue,
+    }
+
+    model MethBagPurple
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagPurple,
+    }
+
+    model MethBagRed
+    {
+        mesh = WorldItems/MethBag,
+        texture = WorldItems/MethBagRed,
+    }
+}
